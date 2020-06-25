@@ -12,16 +12,11 @@ namespace itertools{
     template< typename T,typename  BOOL>
 
     struct compress{
-
         T list ;
         BOOL booleans;
 
         explicit compress(T l , BOOL b):list(l),booleans(b){};
-
-
-
         struct iterator{
-
             typename T::iterator st;
             typename T::iterator last;
             typename BOOL::iterator bools;
@@ -33,26 +28,21 @@ namespace itertools{
                     ++ bools;
                 }
             };
-
             bool operator!=(iterator o){
                 return (st!=o.st);
             }
-
             iterator& operator++(){
-++st;
-++bools;
+            ++st;
+            ++bools;
                     while(st!=last && !(*bools)){
                         ++st;
                         ++ bools;
                     }
-
                 return *this;
             }
-
             auto operator*(){
                 return *st;
             }
-
         };
 
         iterator begin(){
